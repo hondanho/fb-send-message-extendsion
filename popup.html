@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap/css/style.css">
+  <link rel="stylesheet" href="css/toastr.min.css">
+  <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="js/toastr.min.js"></script>
+  <script type="text/javascript" src="popup.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto,wght@700&display=swap">
+</head>
+
+<body>
+  <div id="full" class="wrap" style="width: 500px">
+    <div class="header full-width flx-bw">
+      <h3 class="title">Gửi tin nhắn hàng loạt từ Facebook page</h3>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container-fluid no-padding main-content">
+            <div class="row group-action" id="goFacebook">
+              <div class="col-12">
+                <span>Mở </span> <a href="https://www.facebook.com/"
+                  target="_blank">Facebook</a> <span>để lấy thông tin đăng nhập tool</span>
+              </div>
+            </div>
+
+            <div class="row group-action" id="loginFacebook">
+              <div class="col-12">
+                <!-- <span class="step"><span>Đang ở trang Facebook</span></span>
+                <br> -->
+                <span class="guide"><span>Vui lòng thực hiện </span> <b>Đăng nhập Facebook</b>.
+                    <br>
+                    <span>Sau đó quay lại để <b>Bắt đầu vào tool</b>.</span></i></span>
+              </div>
+            </div>
+
+            <div class="row group-action" id="startTool">
+              <div class="col-12">
+                <button id="start" class="btn btn-primary">Bắt đầu tool</button>
+              </div>
+            </div>
+            <div id="div-copy-loader" class="col-12 none">
+              <div class="loader"></div>
+              <div class="text-center">Đang đăng nhập tool</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

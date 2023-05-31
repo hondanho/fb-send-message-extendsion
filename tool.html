@@ -1,0 +1,146 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Facebook page send messages tool</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto main-content">
+        <div class="step" id="page-step">
+          <h4 class="step-title">1. Chọn trang</h4>
+          <div class="form-group">
+            <button type="button" class="btn btn-lg btn-primary btn-block" id="btn-get-pages">Lấy danh sách trang</button>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="list-pages">
+            </select>
+          </div>
+        </div>
+        <div class="step" id="customer-step">
+          <h4 class="step-title">2. Lấy danh sách khách hàng</h4>
+          <div class="form-group hide">
+            <button type="button" class="btn btn-lg btn-primary btn-block" id="btn-get-customers">Lấy danh sách khách hàng</button>
+          </div>
+          <h6><span>Danh sách khách hàng từ trang: </span><span id="current-page">-</span></h6>
+          <div class="table-responsive">
+            <table id="table-list-customer" class="table table-fixed">
+              <thead>
+                <tr>
+                  <th scope="col" class="col-1">
+                    <input type="checkbox" id="cb-check-all"></input>
+                  </th>
+                  <th scope="col" class="col-4">Uid</th>
+                  <th scope="col" class="col-4">Tên</th>
+                  <th scope="col" class="col-3">Trạng thái gửi tin</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+            <div>
+              <span id="no-choosed-customers">0</span>/<span id="no-all-customers">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="step" id="message-step">
+          <h4>3. Nhập tin nhắn</h4>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <button id="insert-name" type="button" class="btn btn-outline-secondary">
+                  <span>Chèn tên {{full_name}}</span>
+                </button>
+                <button id="insert-random" type="button" class="btn btn-outline-secondary">
+                  <span>Chèn câu ngẫu nhiên {{Xin chào|Chào bạn|Hi}}</span>
+                </button>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" id="message-content" rows="5" placeholder="Nội dung tin nhắn"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div class="table table-dz table-striped" class="files" id="previews">
+                  <div id="actions">
+                    <div>
+                      <button class="btn btn-success fileinput-button"><i class="fa fa-image"></i> Thêm hình ảnh</button>
+                      <span class="font-weight-lighter font-italic">(Tối đa 3 hình ảnh)</span>
+                    </div>
+                  </div>
+
+                  <div class="table table-dz table-striped files" id="previews">
+                    <div id="template" class="file-row">
+                      <div>
+                          <span class="preview"><img data-dz-thumbnail /></span>
+                      </div>
+                      <div>
+                          <p class="size" data-dz-size></p>
+                          <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                          </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary start">
+                            <i class="fa fa-upload"></i>
+                            <span>Tải lên</span>
+                        </button>
+                        <button data-dz-remove class="btn btn-warning cancel">
+                            <i class="fa fa-circle"></i>
+                            <span>Hủy</span>
+                        </button>
+                        <button data-dz-remove class="btn btn-danger delete">
+                          <i class="fa fa-trash"></i>
+                          <span>Xóa</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Thời gian chờ (milliseconds)</span>
+                  </div>
+                  <input type="text" class="form-control" id="send-message-sleep" value="5000" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="send-message-progress">
+              <div class="send-message-stat" id="send-message-stat">
+                <span class="item-stat">Đã gửi: <span id="sent" class="text-primary">0</span>/<span id="total">0</span></span>
+                <span class="item-stat">Thành công: <span id="success" class="text-success">0</span></span>
+                <span class="item-stat">Lỗi: <span id="error" class="text-danger">0</span></span>
+              </div>
+              <div class="progress">
+                <div id="send-message-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-lg btn-primary btn-block" id="btn-send-message">Gửi tin nhắn</button>
+            <button type="button" class="btn btn-lg btn-danger btn-block hide" id="btn-stop-send-message">Dừng gửi tin nhắn</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <in>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
